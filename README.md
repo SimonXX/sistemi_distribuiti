@@ -1,6 +1,6 @@
 ## Build e avvio Container
 
-Per costruire le immagini dei container è possibile eseguire il comando:
+Per costruire le immagini dei container è possibile eseguire il seguente comando nella root della repository:
 
 `docker-compose up`
 
