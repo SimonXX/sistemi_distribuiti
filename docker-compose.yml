@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+
+  workwise-db:
+    container_name: workwise-db
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: workwise
+      POSTGRES_USER: sichiarelli
+      POSTGRES_PASSWORD: '@Linux110'  # Assicurati che le virgolette siano usate correttamente
+    volumes:
+      - workwise-persistence:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - workwise-net
+    ports:
+      - "5433:5432"
+
+  workwise-backend:
+    container_name: workwise-backend
+    build:
+      context: ./workwise-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - workwise-persistence:/var/lib/backend
+    networks:
+      - workwise-net
+    depends_on:
+      - workwise-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://workwise-db:5432/workwise
+
+  workwise-frontend:
+    container_name: workwise-frontend
+    build:
+      context: ./workwise-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - workwise-net
+    depends_on:
+      - workwise-backend
+
+volumes:
+  workwise-persistence:
+
+networks:
+  workwise-net:
+    driver: bridge
+

@@ -1,0 +1,91 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f5; /* Colore di sfondo chiaro e pulito */
+}
+
+.content {
+  text-align: center;
+  max-width: 90vw; /* Larghezza massima del contenuto del 90% della larghezza della finestra */
+}
+
+.animation-container {
+  opacity: 0;
+  animation: fade-in 5s forwards;
+}
+
+h1 {
+  font-size: 3vw; /* Dimensione del titolo in base alla larghezza della finestra */
+  margin-bottom: 3vh; /* Margine inferiore in base all'altezza della finestra */
+  color: #4a4a4a; /* Testo grigio scuro */
+}
+
+p {
+  font-size: 1.2vw; /* Dimensione del testo in base alla larghezza della finestra */
+  margin-bottom: 3vh; /* Margine inferiore in base all'altezza della finestra */
+  color: #666; /* Testo grigio medio */
+  font-style: italic; /* Corsivo */
+}
+
+nav {
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  width: 30vw;
+  height: auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2vh 0;
+}
+
+nav a {
+  font-size: 1.5vw;
+  font-weight: 500;
+  color: #ffffff; /* Testo bianco */
+  text-decoration: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 8vh;
+  margin: 1vh 0;
+  background: #333; /* Grigio scuro */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: background 0.3s; /* Transizione per il colore di sfondo */
+}
+
+nav a:hover {
+  background: #28a745; /* Verde scuro al passaggio del mouse */
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 5vw; /* Riduci la dimensione del titolo per dispositivi più piccoli */
+  }
+
+  p {
+    font-size: 2vw; /* Riduci la dimensione del testo per dispositivi più piccoli */
+  }
+
+  nav a {
+    font-size: 2.5vw; /* Riduci la dimensione del testo della barra di navigazione per dispositivi più piccoli */
+  }
+}
